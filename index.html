@@ -1,0 +1,1388 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>التقرير الختامي لإدارة الخدمات الإسعافية في موسم حج 1447هـ</title>
+  <style>
+    :root {
+      --ink: #22272c;
+      --muted: #626a72;
+      --line: #e4ded3;
+      --paper: #ffffff;
+      --soft: #faf7f0;
+      --brand: #be1e3d;
+      --brand-dark: #8d172e;
+      --accent: #c79249;
+      --accent-soft: #f3dfbd;
+      --charcoal: #505761;
+      --danger: #b64332;
+      --blue: #2f6f9f;
+      --shadow: 0 18px 45px rgba(34, 39, 44, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f1eee8;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      line-height: 1.75;
+    }
+
+    .editor-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--line);
+      border-top: 0;
+      box-shadow: 0 12px 28px rgba(34, 39, 44, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .editor-actions,
+    .format-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .editor-status {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .edit-button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 12px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .edit-button:hover {
+      border-color: var(--accent);
+      color: var(--brand-dark);
+    }
+
+    .edit-button.primary {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .edit-button[disabled] {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    body.edit-mode .page {
+      outline: 3px solid rgba(190, 30, 61, 0.28);
+      outline-offset: 6px;
+    }
+
+    body.edit-mode .page [contenteditable="true"]:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      background: rgba(255, 248, 234, 0.72);
+    }
+
+    body.edit-mode .page td:focus,
+    body.edit-mode .page th:focus,
+    body.edit-mode .page p:focus,
+    body.edit-mode .page h1:focus,
+    body.edit-mode .page h2:focus,
+    body.edit-mode .page h3:focus,
+    body.edit-mode .page li:focus,
+    body.edit-mode .page span:focus,
+    body.edit-mode .page strong:focus,
+    body.edit-mode .page .summary:focus,
+    body.edit-mode .page .kicker:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      background: rgba(255, 248, 234, 0.8);
+    }
+
+    .edit-hint {
+      width: min(1120px, calc(100% - 32px));
+      margin: 12px auto 0;
+      padding: 10px 14px;
+      color: #5a421d;
+      background: #fff8ea;
+      border: 1px solid var(--accent-soft);
+      font-size: 13px;
+      display: none;
+    }
+
+    body.edit-mode .edit-hint {
+      display: block;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 28px auto;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.96)),
+        url("enjad-official-letterhead.jpg") top center / 100% auto no-repeat;
+      pointer-events: none;
+      opacity: 0.34;
+    }
+
+    .hero {
+      min-height: 360px;
+      padding: 48px;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.72)),
+        url("enjad-official-letterhead.jpg") top center / cover no-repeat;
+      display: grid;
+      align-content: space-between;
+      gap: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 38%;
+      background:
+        linear-gradient(0deg, rgba(80, 80, 82, 0.9), rgba(80, 80, 82, 0)),
+        linear-gradient(12deg, transparent 54%, rgba(150, 28, 28, 0.28) 55%, transparent 62%);
+      pointer-events: none;
+    }
+
+    .brand-strip {
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-crop {
+      width: 310px;
+      height: 205px;
+      background: url("enjad-official-letterhead.jpg") center -72px / 1320px auto no-repeat;
+      filter: drop-shadow(0 8px 15px rgba(34, 39, 44, 0.06));
+    }
+
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--brand-dark);
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(34px, 6vw, 64px);
+      line-height: 1.18;
+      letter-spacing: 0;
+      color: var(--brand);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta-box {
+      border: 1px solid rgba(199, 146, 73, 0.36);
+      background: rgba(255, 255, 255, 0.88);
+      padding: 14px 16px;
+      box-shadow: 0 10px 24px rgba(34, 39, 44, 0.06);
+    }
+
+    .meta-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .meta-box strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--brand-dark);
+      font-size: 17px;
+    }
+
+    main {
+      padding: 38px 48px 56px;
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    section:first-child {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      color: var(--brand-dark);
+      font-size: 25px;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin: 24px 0 12px;
+      color: var(--ink);
+      font-size: 20px;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      min-height: 132px;
+      padding: 18px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--accent);
+      display: grid;
+      align-content: space-between;
+      gap: 16px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .stat .value {
+      color: var(--brand-dark);
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .stat .note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .dash-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: inset 0 4px 0 var(--accent-soft);
+    }
+
+    .dash-card.feature {
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(141, 23, 46, 0.96), rgba(80, 87, 97, 0.95)),
+        url("enjad-official-letterhead.jpg") bottom center / cover no-repeat;
+      box-shadow: none;
+      border: 0;
+    }
+
+    .dash-title {
+      margin: 0 0 12px;
+      color: var(--brand-dark);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .feature .dash-title,
+    .feature .dash-number,
+    .feature .dash-caption {
+      color: white;
+    }
+
+    .dash-number {
+      margin: 0;
+      color: var(--brand);
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .dash-caption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .dashboard-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .mini-metric {
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .mini-metric span {
+      display: block;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 12px;
+    }
+
+    .mini-metric strong {
+      display: block;
+      margin-top: 4px;
+      color: #fff;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .dash-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .progress-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .progress-item {
+      display: grid;
+      grid-template-columns: 120px 1fr 58px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .progress-label {
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .progress-track {
+      height: 12px;
+      background: #ece6dc;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+    }
+
+    .progress-value {
+      color: var(--brand-dark);
+      direction: ltr;
+      font-weight: 800;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .site-rank {
+      display: grid;
+      gap: 12px;
+      counter-reset: site;
+    }
+
+    .site-item {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      counter-increment: site;
+    }
+
+    .site-item::before {
+      content: counter(site);
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--brand);
+      font-weight: 800;
+    }
+
+    .site-name {
+      font-weight: 800;
+    }
+
+    .site-count {
+      color: var(--brand-dark);
+      direction: ltr;
+      font-weight: 900;
+    }
+
+    .donut-wrap {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .donut {
+      width: 148px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: conic-gradient(var(--brand) 0 50.8%, var(--accent) 50.8% 99.4%, var(--charcoal) 99.4% 100%);
+      position: relative;
+    }
+
+    .donut::after {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .legend {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend i {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      background: var(--brand);
+    }
+
+    .legend span:nth-child(2) i {
+      background: var(--accent);
+    }
+
+    .legend span:nth-child(3) i {
+      background: var(--charcoal);
+    }
+
+    .callout {
+      margin: 18px 0;
+      padding: 18px 20px;
+      border-inline-start: 5px solid var(--accent);
+      background: #fff8ea;
+      color: #4f3c18;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 22px;
+      font-size: 15px;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      vertical-align: middle;
+    }
+
+    th {
+      color: white;
+      background: linear-gradient(90deg, var(--brand-dark), var(--charcoal));
+      font-weight: 700;
+      text-align: right;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8faf9;
+    }
+
+    .number,
+    .percent {
+      text-align: center;
+      direction: ltr;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .bar-cell {
+      min-width: 210px;
+    }
+
+    .bar {
+      height: 10px;
+      background: #e8eee9;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 20px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      box-shadow: inset 0 3px 0 var(--accent-soft);
+    }
+
+    .panel h3 {
+      margin-top: 0;
+      color: var(--brand-dark);
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding: 0 22px 0 0;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .recommendations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 3px 0 3px 6px;
+      padding: 4px 10px;
+      color: var(--brand-dark);
+      background: #fff2dc;
+      border: 1px solid var(--accent-soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .summary {
+      padding: 24px;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(141, 23, 46, 0.96), rgba(80, 87, 97, 0.96)),
+        url("enjad-official-letterhead.jpg") bottom center / cover no-repeat;
+      border-inline-start: 8px solid var(--accent);
+      font-size: 17px;
+    }
+
+    .footer {
+      min-height: 190px;
+      padding: 92px 48px 22px;
+      border-top: 1px solid var(--line);
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(80, 80, 82, 0.18) 42%, rgba(80, 80, 82, 0.96) 72%),
+        url("enjad-official-letterhead.jpg") bottom center / cover no-repeat;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 22px;
+      font-size: 13px;
+      position: relative;
+      z-index: 1;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .editor-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .editor-actions,
+      .format-actions {
+        justify-content: center;
+      }
+
+      .hero,
+      main,
+      .footer {
+        padding-inline: 24px;
+      }
+
+      .stats-grid,
+      .dashboard,
+      .dashboard-grid,
+      .two-col,
+      .analysis-grid,
+      .recommendations {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .progress-item,
+      .donut-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm;
+      }
+
+      .editor-toolbar,
+      .edit-hint {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .page {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border: 0;
+      }
+
+      .hero {
+        min-height: 260px;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      section,
+      .panel,
+      table {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="editor-toolbar" role="region" aria-label="أدوات تحرير التقرير">
+    <div class="editor-actions">
+      <button class="edit-button primary" type="button" id="toggleEdit">تفعيل التعديل</button>
+      <button class="edit-button" type="button" id="downloadHtml" disabled>حفظ نسخة HTML معدلة</button>
+      <button class="edit-button" type="button" id="printReport">طباعة / حفظ PDF</button>
+    </div>
+    <div class="format-actions" aria-label="تنسيق النص">
+      <button class="edit-button" type="button" data-command="bold" disabled>غامق</button>
+      <button class="edit-button" type="button" data-command="italic" disabled>مائل</button>
+      <button class="edit-button" type="button" data-command="insertUnorderedList" disabled>قائمة</button>
+    </div>
+    <div class="editor-status" id="editorStatus">وضع القراءة</div>
+  </div>
+  <div class="edit-hint">وضع التعديل مفعل: اضغط على أي نص أو خلية جدول وعدّل مباشرة، ثم اختر “حفظ نسخة HTML معدلة”.</div>
+  <article class="page">
+    <header class="hero">
+      <div class="brand-strip" aria-label="شعار جمعية إنجاد">
+        <div class="logo-crop" role="img" aria-label="شعار جمعية إنجاد للبحث والإنقاذ"></div>
+      </div>
+      <div class="hero-title">
+        <p class="kicker">جمعية إنجاد للبحث والإنقاذ | إدارة الخدمات الإسعافية</p>
+        <h1>التقرير الختامي لإدارة الخدمات الإسعافية في موسم حج 1447هـ</h1>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-box">
+          <span>الموسم</span>
+          <strong>موسم حج 1447هـ / 2026م</strong>
+        </div>
+        <div class="meta-box">
+          <span>فترة التقرير</span>
+          <strong>18 مايو 2026 - 29 مايو 2026</strong>
+        </div>
+        <div class="meta-box">
+          <span>إجمالي الحالات</span>
+          <strong>1,015 حالة مباشرة</strong>
+        </div>
+        <div class="meta-box">
+          <span>نطاق التقرير</span>
+          <strong>تحليل إحصائي وتشغيلي نهائي</strong>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>أولاً: الإحصائية العامة</h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="label">إجمالي الحالات المباشرة</div>
+            <div class="value">1,015</div>
+            <div class="note">حالة إسعافية ميدانية</div>
+          </div>
+          <div class="stat">
+            <div class="label">المسعفون المشاركون بالتسجيل</div>
+            <div class="value">79</div>
+            <div class="note">مسعف ومتطوع</div>
+          </div>
+          <div class="stat">
+            <div class="label">أعلى يوم تشغيلي</div>
+            <div class="value">28 مايو</div>
+            <div class="note">2026</div>
+          </div>
+          <div class="stat">
+            <div class="label">أعلى منطقة تشغيلية</div>
+            <div class="value">الجمرات</div>
+            <div class="note">337 حالة مباشرة</div>
+          </div>
+          <div class="stat">
+            <div class="label">البرامج التوعوية قبل الموسم</div>
+            <div class="value">3</div>
+            <div class="note">محاضرات مكافحة عدوى استفاد منها 114 عضو</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>لوحة المؤشرات التنفيذية</h2>
+        <div class="dashboard">
+          <div class="dash-card feature">
+            <p class="dash-title">مؤشر الأداء العام</p>
+            <p class="dash-number">89.2%</p>
+            <p class="dash-caption">من الحالات تم علاجها بالموقع دون الحاجة إلى نقل أو تسليم لجهة أخرى.</p>
+            <div class="dashboard-metrics">
+              <div class="mini-metric">
+                <span>متوسط الحالات لكل مسعف</span>
+                <strong>12.8</strong>
+              </div>
+              <div class="mini-metric">
+                <span>أعلى موقع ضغط</span>
+                <strong>الجمرات</strong>
+              </div>
+              <div class="mini-metric">
+                <span>الحالات الحرارية</span>
+                <strong>201</strong>
+              </div>
+              <div class="mini-metric">
+                <span>المستفيدون من التوعية</span>
+                <strong>114</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-stack">
+            <div class="dash-card">
+              <p class="dash-title">الإجراءات الإسعافية</p>
+              <div class="progress-list">
+                <div class="progress-item">
+                  <span class="progress-label">علاج بالموقع</span>
+                  <span class="progress-track"><span class="progress-fill" style="width: 89.2%"></span></span>
+                  <span class="progress-value">89.2%</span>
+                </div>
+                <div class="progress-item">
+                  <span class="progress-label">نقل / توجيه</span>
+                  <span class="progress-track"><span class="progress-fill" style="width: 6.6%"></span></span>
+                  <span class="progress-value">6.6%</span>
+                </div>
+                <div class="progress-item">
+                  <span class="progress-label">هلال أحمر</span>
+                  <span class="progress-track"><span class="progress-fill" style="width: 2.7%"></span></span>
+                  <span class="progress-value">2.7%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <p class="dash-title">ملخص تشغيلي سريع</p>
+              <p>الحالات الميدانية تركزت في نطاقات المشي والكثافة البشرية، مع غلبة الحالات البسيطة والمتوسطة، وارتفاع واضح في فعالية المعالجة بالموقع.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="dash-card">
+            <p class="dash-title">التوزيع الجغرافي</p>
+            <div class="donut-wrap">
+              <div class="donut" aria-label="توزيع جغرافي للحالات"></div>
+              <div class="legend">
+                <span><i></i>المشاعر المقدسة: 516</span>
+                <span><i></i>المنطقة المركزية: 493</span>
+                <span><i></i>مواقع أخرى: 6</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <p class="dash-title">أكثر المواقع ضغطاً</p>
+            <div class="site-rank">
+              <div class="site-item">
+                <span class="site-name">الجمرات</span>
+                <span class="site-count">337</span>
+              </div>
+              <div class="site-item">
+                <span class="site-name">عرفات / جبل الرحمة</span>
+                <span class="site-count">179</span>
+              </div>
+              <div class="site-item">
+                <span class="site-name">أجياد / المنطقة المركزية</span>
+                <span class="site-count">141</span>
+              </div>
+              <div class="site-item">
+                <span class="site-name">بوابة الملك عبدالعزيز</span>
+                <span class="site-count">115</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <p class="dash-title">أعلى أنواع الحالات</p>
+            <div class="progress-list">
+              <div class="progress-item">
+                <span class="progress-label">جروح / تضميد</span>
+                <span class="progress-track"><span class="progress-fill" style="width: 100%"></span></span>
+                <span class="progress-value">226</span>
+              </div>
+              <div class="progress-item">
+                <span class="progress-label">إجهاد عام</span>
+                <span class="progress-track"><span class="progress-fill" style="width: 80%"></span></span>
+                <span class="progress-value">181</span>
+              </div>
+              <div class="progress-item">
+                <span class="progress-label">إجهاد حراري</span>
+                <span class="progress-track"><span class="progress-fill" style="width: 73%"></span></span>
+                <span class="progress-value">165</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>ثانياً: توزيع الحالات بعد تصنيفها</h2>
+
+        <table aria-label="توزيع الحالات النهائي">
+          <thead>
+            <tr>
+              <th>نوع الحالة</th>
+              <th>العدد</th>
+              <th>النسبة</th>
+              <th>مؤشر نسبي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>جروح / تضميد</td>
+              <td class="number">226</td>
+              <td class="percent">22.3%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:100%"></span></div></td>
+            </tr>
+            <tr>
+              <td>إجهاد عام</td>
+              <td class="number">181</td>
+              <td class="percent">17.8%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:80%"></span></div></td>
+            </tr>
+            <tr>
+              <td>إجهاد حراري</td>
+              <td class="number">165</td>
+              <td class="percent">16.3%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:73%"></span></div></td>
+            </tr>
+            <tr>
+              <td>ارتفاع / انخفاض سكر الدم</td>
+              <td class="number">114</td>
+              <td class="percent">11.2%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:50%"></span></div></td>
+            </tr>
+            <tr>
+              <td>آلام عضلية</td>
+              <td class="number">112</td>
+              <td class="percent">11.0%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:50%"></span></div></td>
+            </tr>
+            <tr>
+              <td>تسلخات وإصابات احتكاك</td>
+              <td class="number">44</td>
+              <td class="percent">4.3%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:19%"></span></div></td>
+            </tr>
+            <tr>
+              <td>ارتفاع / انخفاض ضغط الدم</td>
+              <td class="number">42</td>
+              <td class="percent">4.1%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:19%"></span></div></td>
+            </tr>
+            <tr>
+              <td>جروح قطعية</td>
+              <td class="number">33</td>
+              <td class="percent">3.3%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:15%"></span></div></td>
+            </tr>
+            <tr>
+              <td>سقوط</td>
+              <td class="number">28</td>
+              <td class="percent">2.8%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:12%"></span></div></td>
+            </tr>
+            <tr>
+              <td>إغماء</td>
+              <td class="number">27</td>
+              <td class="percent">2.7%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:12%"></span></div></td>
+            </tr>
+            <tr>
+              <td>ضربة شمس</td>
+              <td class="number">22</td>
+              <td class="percent">2.2%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:10%"></span></div></td>
+            </tr>
+            <tr>
+              <td>جفاف</td>
+              <td class="number">14</td>
+              <td class="percent">1.4%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:6%"></span></div></td>
+            </tr>
+            <tr>
+              <td>اختناق</td>
+              <td class="number">7</td>
+              <td class="percent">0.7%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:3%"></span></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>ثالثاً: التوزيع الجغرافي للحالات</h2>
+        <div class="two-col">
+          <div>
+            <h3>التوزيع حسب المنطقة</h3>
+            <table aria-label="التوزيع الجغرافي">
+              <thead>
+                <tr>
+                  <th>المنطقة</th>
+                  <th>عدد الحالات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>المشاعر المقدسة</td>
+                  <td class="number">516</td>
+                </tr>
+                <tr>
+                  <td>المنطقة المركزية</td>
+                  <td class="number">493</td>
+                </tr>
+                <tr>
+                  <td>مواقع أخرى</td>
+                  <td class="number">6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3>أكثر المواقع مباشرة للحالات</h3>
+            <table aria-label="أكثر المواقع مباشرة للحالات">
+              <thead>
+                <tr>
+                  <th>الموقع</th>
+                  <th>عدد الحالات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>الجمرات</td>
+                  <td class="number">337</td>
+                </tr>
+                <tr>
+                  <td>عرفات / جبل الرحمة</td>
+                  <td class="number">179</td>
+                </tr>
+                <tr>
+                  <td>أجياد / المنطقة المركزية</td>
+                  <td class="number">141</td>
+                </tr>
+                <tr>
+                  <td>بوابة الملك عبدالعزيز</td>
+                  <td class="number">115</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>رابعاً: الإجراءات الإسعافية المقدمة</h2>
+        <p class="lead">بعد مراجعة السجلات غير المكتملة تم إدراج الحالات غير الموثق فيها الإجراء ضمن “تم العلاج بالموقع”.</p>
+        <table aria-label="الإجراءات الإسعافية المقدمة">
+          <thead>
+            <tr>
+              <th>الإجراء الإسعافي</th>
+              <th>العدد</th>
+              <th>النسبة</th>
+              <th>مؤشر نسبي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>تم العلاج بالموقع</td>
+              <td class="number">905</td>
+              <td class="percent">89.2%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:100%"></span></div></td>
+            </tr>
+            <tr>
+              <td>نقل / توجيه لمركز صحي</td>
+              <td class="number">67</td>
+              <td class="percent">6.6%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:7.4%"></span></div></td>
+            </tr>
+            <tr>
+              <td>تسليم للهلال الأحمر</td>
+              <td class="number">27</td>
+              <td class="percent">2.7%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:3%"></span></div></td>
+            </tr>
+            <tr>
+              <td>رفض النقل</td>
+              <td class="number">11</td>
+              <td class="percent">1.1%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:1.2%"></span></div></td>
+            </tr>
+            <tr>
+              <td>حالات حرجة استدعت تدخل متقدم</td>
+              <td class="number">5</td>
+              <td class="percent">0.4%</td>
+              <td class="bar-cell"><div class="bar"><span style="width:0.6%"></span></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>خامساً: التحليل التشغيلي</h2>
+        <div class="analysis-grid">
+          <div class="panel">
+            <h3>1. طبيعة الحالات</h3>
+            <p>أظهرت البيانات أن غالبية الحالات كانت إصابات بسيطة ومتوسطة، وإجهادات ناتجة عن المشي والحرارة، ومشاكل سكر وضغط مرتبطة بالإجهاد البدني.</p>
+            <p>يدل ذلك على دور الفرق الإسعافية في تخفيف الضغط على المنشآت الصحية، ومعالجة الحالات ميدانياً قبل تفاقمها، وتقليل البلاغات الطارئة غير الضرورية.</p>
+          </div>
+          <div class="panel">
+            <h3>2. الضغط التشغيلي</h3>
+            <p>تركزت أعلى كثافة للحالات في الجمرات، عرفات، والمنطقة المركزية، وهي مناطق تشهد كثافة بشرية عالية، ومسافات مشي طويلة، وارتفاعاً في إجهاد الحرارة.</p>
+          </div>
+          <div class="panel">
+            <h3>3. كفاءة الفرق الميدانية</h3>
+            <p>معالجة 89.2% من الحالات بالموقع تعد مؤشر أداء مرتفعاً، وتعكس سرعة استجابة جيدة، وقدرة عالية على الفرز والتقييم، وفعالية التدخلات الإسعافية الأولية.</p>
+            <p>كما أن انخفاض نسب النقل للهلال الأحمر يدل على نجاح الفرق في التعامل مع الحالات غير الحرجة بكفاءة.</p>
+          </div>
+          <div class="panel">
+            <h3>4. الملاحظات التشغيلية</h3>
+            <ul>
+              <li>وجود تفاوت في جودة التوثيق، مثل علامات حيوية غير مكتملة وأرقام غير منطقية وغياب الإجراء النهائي للحالة.</li>
+              <li>الحاجة إلى ضبط التصنيفات الطبية وتوحيدها بما يسهل التحليل الإحصائي ويرفع جودة قراءة البيانات.</li>
+              <li>تفاوت الخبرة بين الفرق في دقة التوثيق والتعامل مع التفاصيل الطبية.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>سادساً: الجاهزية التوعوية قبل الموسم</h2>
+        <div class="analysis-grid">
+          <div class="panel">
+            <h3>برامج مكافحة العدوى بالحج</h3>
+            <p>ضمن استعدادات إدارة الخدمات الإسعافية قبل موسم الحج، تم تنفيذ ثلاثة برامج توعوية متخصصة للمسعفين حول مكافحة العدوى أثناء العمل الميداني في بيئة الحج.</p>
+            <p>شملت البرامج محاضرة واحدة عن بُعد ومحاضرتين حضوريتين، واستفاد منها 114 عضواً من المشاركين في الخدمات الإسعافية التطوعية.</p>
+          </div>
+          <div class="panel">
+            <h3>الأثر التشغيلي المتوقع</h3>
+            <ul>
+              <li>رفع وعي المسعفين بإجراءات الوقاية الشخصية ومكافحة انتقال العدوى.</li>
+              <li>تعزيز الالتزام بالممارسات الآمنة أثناء مباشرة الحالات في المواقع عالية الكثافة.</li>
+              <li>دعم جاهزية الفرق للتعامل مع الحالات الميدانية ضمن بيئة تشغيلية تتطلب انضباطاً صحياً عالياً.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>سابعاً: تطوير نموذج توثيق الحالات الإسعافية</h2>
+        <p class="lead">قبل موسم الحج بفترة قصيرة، استحدثت إدارة الخدمات الإسعافية نموذجاً خاصاً لتسجيل الحالات الإسعافية من قبل المسعفين الميدانيين، بهدف رفع جودة التوثيق وتحسين دقة البيانات التشغيلية. ويعد هذا النموذج إضافة تطويرية مهمة، حيث لم يكن معمولاً به في الأعوام السابقة، وأسهم بشكل واضح في توثيق الحالات الإسعافية ومتابعة الإجراءات المقدمة لها.</p>
+        <div class="analysis-grid">
+          <div class="panel">
+            <h3>التفعيل والتدريب على النموذج</h3>
+            <p>تم شرح النموذج للمسعفين وتعليمهم آلية إدخال البيانات قبل انطلاق موسم الحج، كما تمت متابعتهم أثناء التواجد الميداني لضمان الاستخدام الصحيح للنموذج وتوحيد طريقة التوثيق بين الفرق.</p>
+            <p>وبالتعاون مع قسم التقنية بالجمعية، تم تخصيص خانة للنموذج داخل التطبيق الرسمي لجمعية إنجاد، مما أتاح للعضو مباشرة الحالة وإدخال بياناتها ميدانياً عبر التطبيق.</p>
+          </div>
+          <div class="panel">
+            <h3>محتويات النموذج</h3>
+            <ul>
+              <li>بيانات الحالة الأساسية وموقع مباشرتها.</li>
+              <li>نوع الحالة وتصنيفها الطبي.</li>
+              <li>الإجراء الإسعافي المقدم للحالة.</li>
+              <li>نتيجة الإجراء، سواء العلاج بالموقع أو النقل أو أي إجراء نهائي آخر.</li>
+              <li>البيانات الشخصية للمصاب وفق المتاح ميدانياً.</li>
+              <li>خانة مخصصة لتوثيق العلامات الحيوية.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>أثر النموذج على التقرير</h3>
+            <p>شكّل هذا النموذج المصدر الأساسي للبيانات والإحصاءات الواردة في هذا التقرير، وأسهم في بناء قاعدة معلومات تشغيلية يمكن الاستفادة منها في التحليل، وقياس الأداء، وتطوير العمل الإسعافي في المواسم القادمة.</p>
+          </div>
+          <div class="panel">
+            <h3>التعاون مع قسم التقنية</h3>
+            <p>شهد موسم حج 1447هـ تعاوناً فعالاً بين إدارة الخدمات الإسعافية وقسم التقنية بالجمعية، حيث كان لقسم التقنية دور مهم في دعم الجانب التشغيلي من خلال تحديث التطبيق الرسمي للجمعية بشكل مستمر، وإضافة خانة مخصصة لنموذج تسجيل الحالات الإسعافية داخل التطبيق.</p>
+            <p>وقد أسهم هذا التعاون في تمكين المسعفين من إدخال بيانات الحالات ميدانياً بشكل مباشر، وتحسين سرعة التوثيق وجودة البيانات، مما انعكس إيجاباً على دقة الإحصاءات والتحليل التشغيلي الوارد في هذا التقرير. ويعد هذا التكامل بين الإدارات نموذجاً مهماً يمكن البناء عليه في المواسم القادمة لتطوير أدوات العمل الميداني ورفع كفاءة المتابعة الإدارية.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>ثامناً: التوصيات</h2>
+        <div class="recommendations">
+          <div class="panel">
+            <h3>التوصيات التشغيلية</h3>
+            <ul>
+              <li>رفع الكثافة التشغيلية في مناطق الضغط، وزيادة عدد الفرق الإسعافية في الجمرات، عرفات / جبل الرحمة، والمنطقة المركزية.</li>
+              <li>تخصيص فرق للحالات الحرارية والإجهاد، خصوصاً الإجهاد الحراري، الإجهاد العام، ضربة الشمس والجفاف.</li>
+              <li>إنشاء نقاط ثابتة للتدخل السريع قرب مسارات المشي الطويلة ومناطق الانتظار وبوابات الحرم.</li>
+              <li>تعزيز مستلزمات الحالات الأكثر شيوعاً، وتشمل مواد التضميد، علاج التسلخات، كمادات التبريد، محاليل الإماهة، وأجهزة قياس السكر والضغط والأكسجين.</li>
+              <li>اعتماد فرز ميداني أسرع للحالات غير الحرجة، بما يدعم سرعة التعامل مع الحالات البسيطة وتقليل التكدس.</li>
+              <li>توزيع الفرق حسب الوقت والموقع، وربط الانتشار الميداني بساعات الذروة وخصوصاً يوم الذروة التشغيلية 28 مايو 2026.</li>
+              <li>تفعيل قائد ميداني لكل نطاق لمتابعة توزيع الفرق، المخزون، جودة التوثيق، وقرارات التعامل مع الحالات.</li>
+              <li>استمرار محاضرات مكافحة العدوى قبل الموسم وتحويلها إلى برنامج إلزامي مختصر للمشاركين في المواقع عالية الكثافة.</li>
+              <li>تنفيذ مراجعة تشغيلية يومية للبيانات أثناء الموسم، تشمل الحالات، المواقع، النواقص، ونمط البلاغات، ثم تعديل توزيع الفرق وفق نتائج المراجعة.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>التوصيات الإدارية</h3>
+            <ul>
+              <li>تحسين تصنيفات الأعضاء المسعفين بين مسعف أولي، ومسعف متقدم، ومسعف صحي متخصص.</li>
+              <li>تفعيل مراجعة يومية للسجلات، وتكليف مسؤول أو قائد نطاق بمراجعة البلاغات قبل إغلاق الشفت لاكتشاف النواقص أو الأخطاء مبكراً.</li>
+              <li>توزيع القوى البشرية حسب البيانات الفعلية للحالات، مع إعادة التوزيع وفق الذروة والموقع بدلاً من الاعتماد على توزيع ثابت.</li>
+              <li>توحيد مسميات المواقع والتصنيفات والإجراءات الإسعافية لتقليل التكرار والاختلاف في الإدخال.</li>
+              <li>قياس أداء الفرق بمؤشرات واضحة تشمل عدد الحالات، جودة التوثيق، سرعة الاستجابة، نسبة العلاج بالموقع، ونسبة البلاغات المكتملة.</li>
+              <li>إنشاء مسار اعتماد للفرق قبل التشغيل، يشمل اكتمال التسجيل، التصنيف، التدريب، واستلام المستلزمات قبل مباشرة العمل الميداني.</li>
+              <li>تعيين مسؤول جودة للتوثيق لمتابعة اكتمال البيانات، رصد الأخطاء المتكررة، ورفع تقرير مختصر للإدارة بشكل يومي.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>التوصيات التدريبية</h3>
+            <ul>
+              <li>تنفيذ تدريب سريع قبل الموسم على الفرز الإسعافي والتوثيق الطبي.</li>
+              <li>رفع مهارة قياس العلامات الحيوية والتعامل مع الإجهاد الحراري.</li>
+              <li>توحيد آلية اتخاذ القرار: العلاج بالموقع، التحويل، أو التسليم للهلال الأحمر.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>تاسعاً: فريق الإعداد والمشاركة الإدارية</h2>
+        <p class="lead">تم إعداد هذا التقرير بمشاركة فريق إدارة الخدمات الإسعافية بجمعية إنجاد، وبإشراف ومتابعة الكوادر الإدارية والميدانية المشاركة في موسم حج 1447هـ.</p>
+        <div class="analysis-grid">
+          <div class="panel">
+            <h3>الإشراف والإدارة</h3>
+            <ul>
+              <li>مدير إدارة الخدمات الإسعافية: سلطان علي المطيري.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>التنسيق الميداني</h3>
+            <ul>
+              <li>فيصل العسيري.</li>
+              <li>سلمان القحطاني.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>إعداد ومراجعة التقرير</h3>
+            <ul>
+              <li>فيصل عبدالرحمن العسيري: نائب مدير إدارة الخدمات الإسعافية.</li>
+              <li>سلمان ناصر القحطاني: عضو إداري.</li>
+              <li>عبدالله الحليبي: عضو إداري ومنسق إعلامي.</li>
+              <li>عبدالله الشهري: عضو إداري.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>عاشراً: الخلاصة</h2>
+        <div class="summary">
+          أثبتت الفرق الإسعافية التطوعية التابعة لجمعية إنجاد قدرة تشغيلية عالية خلال موسم الحج، وساهمت بفاعلية في مباشرة أكثر من ألف حالة ميدانية، مع تحقيق نسبة مرتفعة من العلاج بالموقع وتقليل الضغط على الجهات الصحية الرسمية. كما دعمت إدارة الخدمات الإسعافية جاهزية المسعفين قبل الموسم من خلال تنفيذ ثلاث محاضرات توعوية حول مكافحة العدوى بالحج، استفاد منها 114 عضواً، إضافة إلى استحداث نموذج توثيق الحالات الإسعافية وتفعيله عبر التطبيق الرسمي للجمعية بالتعاون مع قسم التقنية. وأظهرت البيانات الحاجة إلى تطوير جودة التوثيق، والتصنيف الطبي، وتوزيع القوى البشرية، والتدريب الميداني المتخصص بما يضمن رفع الكفاءة التشغيلية في المواسم القادمة وتحسين جودة الخدمة الإسعافية المقدمة لضيوف الرحمن.
+        </div>
+      </section>
+    </main>
+
+  <footer class="footer">
+      <span>التقرير الختامي لإدارة الخدمات الإسعافية في موسم حج 1447هـ</span>
+      <span>جمعية إنجاد للبحث والإنقاذ - إدارة الخدمات الإسعافية</span>
+    </footer>
+  </article>
+  <script>
+    (function () {
+      var page = document.querySelector(".page");
+      var toggleEdit = document.getElementById("toggleEdit");
+      var downloadHtml = document.getElementById("downloadHtml");
+      var printReport = document.getElementById("printReport");
+      var editorStatus = document.getElementById("editorStatus");
+      var commandButtons = document.querySelectorAll("[data-command]");
+      var editableSelector = "h1, h2, h3, p, li, td, th, span, strong, .summary, .kicker, .dash-number, .dash-title, .dash-caption, .progress-label, .progress-value, .site-name, .site-count";
+
+      function editableItems() {
+        return page.querySelectorAll(editableSelector);
+      }
+
+      function setEditMode(enabled) {
+        document.body.classList.toggle("edit-mode", enabled);
+        editableItems().forEach(function (element) {
+          element.setAttribute("contenteditable", enabled ? "true" : "false");
+          if (enabled) {
+            element.setAttribute("spellcheck", "true");
+          } else {
+            element.removeAttribute("spellcheck");
+          }
+        });
+        commandButtons.forEach(function (button) {
+          button.disabled = !enabled;
+        });
+        downloadHtml.disabled = false;
+        toggleEdit.textContent = enabled ? "إيقاف التعديل" : "تفعيل التعديل";
+        editorStatus.textContent = enabled ? "وضع التعديل مفعل" : "وضع القراءة";
+      }
+
+      function cleanCloneForDownload() {
+        var clone = document.documentElement.cloneNode(true);
+        clone.querySelector("body").classList.remove("edit-mode");
+        clone.querySelectorAll("[contenteditable]").forEach(function (element) {
+          element.removeAttribute("contenteditable");
+          element.removeAttribute("spellcheck");
+        });
+        clone.querySelectorAll(".editor-toolbar button").forEach(function (button) {
+          button.removeAttribute("disabled");
+        });
+        return "<!doctype html>\n" + clone.outerHTML;
+      }
+
+      toggleEdit.addEventListener("click", function () {
+        setEditMode(!document.body.classList.contains("edit-mode"));
+      });
+
+      commandButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          if (!document.body.classList.contains("edit-mode")) return;
+          document.execCommand(button.dataset.command, false, null);
+        });
+      });
+
+      downloadHtml.addEventListener("click", function () {
+        var html = cleanCloneForDownload();
+        var blob = new Blob([html], { type: "text/html;charset=utf-8" });
+        var link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "enjad-hajj-2026-final-report-edited.html";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(link.href);
+      });
+
+      printReport.addEventListener("click", function () {
+        window.print();
+      });
+
+      setEditMode(false);
+    })();
+  </script>
+</body>
+</html>
