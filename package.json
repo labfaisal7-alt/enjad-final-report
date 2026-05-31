@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "playwright-core": "^1.60.0",
-    "pptxgenjs": "^4.0.1"
-  }
-}
