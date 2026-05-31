@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة التسجيلات الميدانية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo-mark" id="brand-mark">HF</div>
+        <div>
+          <div class="nav-title" id="nav-title"></div>
+          <div class="nav-subtitle" id="nav-subtitle"></div>
+        </div>
+      </div>
+
+      <div class="tabs" id="tabs"></div>
+      <div class="date-pill" id="date-pill"></div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-logo">
+          <div class="logo-mark large" id="hero-mark">HF</div>
+          <strong id="hero-org"></strong>
+        </div>
+        <div>
+          <div class="hero-badge" id="hero-badge"></div>
+          <h1 id="hero-title"></h1>
+          <p id="hero-summary"></p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="kpi-strip" id="kpi-strip"></section>
+
+      <section class="page active" data-page="overview">
+        <div class="section-head">
+          <span></span>
+          <h2 id="daily-title">التوزيع اليومي للتسجيلات</h2>
+          <b id="daily-count"></b>
+        </div>
+        <div class="card chart-card tall">
+          <canvas id="dailyChart"></canvas>
+        </div>
+
+        <div class="grid two-one">
+          <article class="card">
+            <h3 id="cases-title">أنواع الحالات الطبية</h3>
+            <div class="bar-list" id="case-bars"></div>
+          </article>
+          <article class="card">
+            <h3 id="gender-title">توزيع الجنس</h3>
+            <canvas id="genderChart"></canvas>
+          </article>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3 id="source-title">مصدر التسجيل</h3>
+            <canvas id="sourceChart"></canvas>
+          </article>
+          <article class="card">
+            <h3>الإجراءات الإسعافية</h3>
+            <div class="bar-list" id="action-bars"></div>
+          </article>
+        </div>
+
+        <div class="grid three">
+          <article class="card mini">
+            <h3 id="roles-title">صفة المصاب</h3>
+            <canvas id="rolesChart"></canvas>
+          </article>
+          <article class="card mini">
+            <h3 id="allergy-title">حساسية الأدوية</h3>
+            <div class="mini-stat" id="allergy-stat"></div>
+            <canvas id="allergyChart"></canvas>
+          </article>
+          <article class="card mini">
+            <h3 id="medicine-title">استخدام الأدوية</h3>
+            <div class="mini-stat" id="medicine-stat"></div>
+            <canvas id="medChart"></canvas>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" data-page="cases">
+        <div class="section-head">
+          <span></span>
+          <h2>تفصيل الحالات الطبية</h2>
+          <b id="cases-count"></b>
+        </div>
+        <div class="card chart-card">
+          <h3>توزيع الحالات - رسم بياني</h3>
+          <canvas id="casesFullChart"></canvas>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>جميع الحالات بالتفصيل</h3>
+            <div class="bar-list" id="cases-full-bars"></div>
+          </article>
+          <article class="card">
+            <h3 id="roles-full-title">صفة المصاب</h3>
+            <canvas id="rolesFullChart"></canvas>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" data-page="locations">
+        <div class="section-head">
+          <span></span>
+          <h2>أبرز مواقع الحوادث</h2>
+          <b>أعلى 10</b>
+        </div>
+        <div class="grid two">
+          <article class="card chart-card">
+            <h3>مقارنة المواقع</h3>
+            <canvas id="locChart"></canvas>
+          </article>
+          <article class="card">
+            <h3>تفصيل المواقع</h3>
+            <div class="bar-list" id="location-bars"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" data-page="members">
+        <div class="section-head">
+          <span></span>
+          <h2 id="members-section-title">الأعضاء الميدانيون</h2>
+          <b id="members-count"></b>
+        </div>
+        <div class="podium" id="podium"></div>
+        <div class="grid two">
+          <article class="card chart-card">
+            <h3>مؤشرات التشغيل</h3>
+            <canvas id="membersChart"></canvas>
+          </article>
+          <article class="card">
+            <h3>تفصيل الملخص</h3>
+            <div class="member-list" id="member-list"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" data-page="forms">
+        <div class="section-head">
+          <span></span>
+          <h2>النماذج المستخدمة</h2>
+          <b id="forms-count"></b>
+        </div>
+        <div class="form-cards" id="form-cards"></div>
+        <div class="card chart-card">
+          <h3>مقارنة التسجيلات بين النماذج</h3>
+          <canvas id="formsChart"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
